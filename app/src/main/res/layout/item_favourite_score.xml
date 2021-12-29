@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="favouriteScoresViewModel"
+            type="com.meehawek.lsmprojekt.viewmodels.FavouriteScoresViewModel" />
+        <variable
+            name="scoreScore"
+            type="com.meehawek.lsmprojekt.data.Score" />
+        <variable
+            name="scoreHosts"
+            type="com.meehawek.lsmprojekt.data.Score" />
+        <variable
+            name="scoreGuests"
+            type="com.meehawek.lsmprojekt.data.Score" />
+        <variable
+            name="scoreDate"
+            type="com.meehawek.lsmprojekt.data.Score" />
+
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_margin="7dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:background="@drawable/layout_score_style">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> favouriteScoresViewModel.remFavHost(scoreHosts.hosts)}"
+                    app:icon="@android:drawable/ic_delete"
+                    style="@style/Widget.AppCompat.Button.Borderless"/>
+
+                <TextView
+                    android:id="@+id/hosts"
+                    style="@style/Mystyle"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@{scoreHosts.hosts, default = hosts}" />
+
+                <TextView
+                    android:id="@+id/score"
+                    android:layout_width="100dp"
+                    style="@style/StyleRed"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@{scoreScore.score, default = score}" />
+
+                <TextView
+                    android:id="@+id/guests"
+                    style="@style/Mystyle"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@{scoreGuests.guests, default = guests}" />
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> favouriteScoresViewModel.remFavGuest(scoreGuests.guests)}"
+                    app:icon="@android:drawable/ic_delete"
+                    style="@style/Widget.AppCompat.Button.Borderless" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@{scoreDate.date, default = date}" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
